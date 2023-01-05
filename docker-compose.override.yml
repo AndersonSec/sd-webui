@@ -1,0 +1,15 @@
+x-base_service: &base_service
+  volumes:
+    - &v1 /bigPool/ai/models:/data
+    - &v2 /bigPool/ai/output:/output
+
+services:
+   auto:
+     environment:
+       # put whatever other flags you want
+       - CLI_ARGS=--enable-insecure-extension-access --allow-code --medvram --xformers --administrator
+     networks:
+       tunnel:
+networks:
+  tunnel:
+    external: true
